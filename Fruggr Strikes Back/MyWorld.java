@@ -46,6 +46,14 @@ public class MyWorld extends World
         addObject(boatSpawner,2,155);
         BoatSpawner2 boatSpawner2 = new BoatSpawner2();
         addObject(boatSpawner2,639,226);
+        boatSpawner.setLocation(2,161);
+        boatSpawner.setLocation(1,164);
+        boatSpawner.setLocation(4,163);
+        boatSpawner.setLocation(0,153);
+        boatSpawner.setLocation(-1,154);
+        boatSpawner.setLocation(0,164);
+        boatSpawner.setLocation(9,156);
+        boatSpawner.setLocation(5,158);
     }
     
     
