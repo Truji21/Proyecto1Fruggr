@@ -26,7 +26,7 @@ public class MyWorld extends World
     {
         showText("Score: " + score,90,20);
         showText("Health: " + health, 200, 20);
-        setPaintOrder(Frogger.class, Bullet.class);
+        setPaintOrder(Frogger.class, Bullet.class, Boat.class, Smoke.class);
     }
     
     private void prepare()
@@ -40,6 +40,12 @@ public class MyWorld extends World
         wall.setLocation(320,50);
         Spawner spawner = new Spawner();
         addObject(spawner,0,417);
+        Spawner2 spawner2 = new Spawner2();
+        addObject(spawner2,639,484);
+        BoatSpawner boatSpawner = new BoatSpawner();
+        addObject(boatSpawner,2,155);
+        BoatSpawner2 boatSpawner2 = new BoatSpawner2();
+        addObject(boatSpawner2,639,226);
     }
     
     

@@ -173,7 +173,7 @@ public class Frogger extends Actor
     
     public void damage()
     {
-        if(isTouching(Vehicle.class)){
+        if(isTouching(Vehicle.class) || isTouching(Smoke.class)){
             if(InvincibilityTimer<=0)
             {
                 health--;

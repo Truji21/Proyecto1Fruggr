@@ -10,6 +10,7 @@ public class Bullet extends Actor
 {
     int Direction = 0;
     int damage = 35;
+    boolean hitenemy = false;
     
     public void act()
     {        
@@ -22,16 +23,21 @@ public class Bullet extends Actor
     public void hit()
     {
         Car EnemyCar = (Car)getOneIntersectingObject(Car.class);
+        Boat EnemyBoat = (Boat)getOneIntersectingObject(Boat.class);
         
         if (EnemyCar != null)
         {
             EnemyCar.damage();
             getWorld().removeObject(this);
-        }
-        else
+        }else{
+        if (EnemyBoat != null)
         {
+            EnemyBoat.damage();
+            getWorld().removeObject(this);
+        }else{
             destroy();
         }
+    }
     }
     
     public void destroy()

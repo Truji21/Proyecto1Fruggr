@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Spawner here.
+ * Write a description of class Spawner2 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Spawner extends Actor
+public class Spawner2 extends Actor
 {
     int timer = 50;
-    int newtimer = 150;
+    int newtimer = 200;
     int x = 1;
     int y = 1;
     
@@ -26,7 +26,7 @@ public class Spawner extends Actor
         {
             Car CarSpawn = new Car();
             getWorld().addObject(CarSpawn,getX(),getY());
-            CarSpawn.Direction = 0;
+            CarSpawn.Direction = 180;
             CarSpawn.Speed = x;
             timer = newtimer;
             if(newtimer>70)
