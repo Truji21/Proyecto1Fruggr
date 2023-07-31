@@ -1,0 +1,4 @@
+Recomendaciones de usuario
+-Hacer una pantalla de instrucciones
+-Mejorar movimiento
+-Hacerlo de una forma más clara que esta pasando en pantalla
