@@ -15,7 +15,8 @@ public class Frogger extends Actor
     long curTime  = System.currentTimeMillis(); //Not used (yet)
     int weapon = 0; //Will be used if more weapons are added, currently useless
     int InvincibilityTimer = 0; //invincibility frames
-    int HopCoolDown = 35; //The lower this is the faster you can move
+    int HopCoolDown = 35; 
+    int NewHop = 30; //The lower this is the faster you can move
     boolean PlayerAlive = true; //You're either dead or alive
     
     MyWorld Game;
@@ -58,7 +59,7 @@ public class Frogger extends Actor
                 setLocation(getX()-speed, getY());
             }
             setImage(playerright);
-            HopCoolDown = 35;
+            HopCoolDown = NewHop;
         }
         
         if (Greenfoot.isKeyDown("A") && HopCoolDown<=0)
@@ -69,7 +70,7 @@ public class Frogger extends Actor
             }
             
             setImage(playerleft);
-            HopCoolDown = 35;
+            HopCoolDown = NewHop;
         }
         
         if (Greenfoot.isKeyDown("W") && HopCoolDown<=0)
@@ -80,7 +81,7 @@ public class Frogger extends Actor
             }
             
             setImage(playerup);
-            HopCoolDown = 35;
+            HopCoolDown = NewHop;
         }
         
         if (Greenfoot.isKeyDown("S") && HopCoolDown<=0)
@@ -91,7 +92,7 @@ public class Frogger extends Actor
             }
             
             setImage(playerdown);
-            HopCoolDown = 35;
+            HopCoolDown = NewHop;
         }
     }
     

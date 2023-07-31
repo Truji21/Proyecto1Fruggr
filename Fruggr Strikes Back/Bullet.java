@@ -15,5 +15,30 @@ public class Bullet extends Actor
     {        
         setRotation(Direction);
         move(5);
+        hit();
+    }
+    
+    //The worst way to code damage ever
+    public void hit()
+    {
+        Car EnemyCar = (Car)getOneIntersectingObject(Car.class);
+        
+        if (EnemyCar != null)
+        {
+            EnemyCar.damage();
+            getWorld().removeObject(this);
+        }
+        else
+        {
+            destroy();
+        }
+    }
+    
+    public void destroy()
+    {
+        if(isTouching(Wall.class))
+        {
+            getWorld().removeObject(this);
+        }
     }
 }

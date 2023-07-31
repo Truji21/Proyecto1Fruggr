@@ -34,10 +34,12 @@ public class MyWorld extends World
         Frogger player = new Frogger();
         addObject(player,307,276);
         player.setLocation(320,544);
-        
+
         Wallhor wall = new Wallhor();
         addObject(wall, 307,0);
         wall.setLocation(320,50);
+        Spawner spawner = new Spawner();
+        addObject(spawner,0,417);
     }
     
     
