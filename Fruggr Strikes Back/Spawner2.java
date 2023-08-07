@@ -12,6 +12,7 @@ public class Spawner2 extends Actor
     int newtimer = 200;
     int x = 1;
     int y = 1;
+    int timerlimit = 100;
     
     public void act()
     {
@@ -29,7 +30,7 @@ public class Spawner2 extends Actor
             CarSpawn.Direction = 180;
             CarSpawn.Speed = x;
             timer = newtimer;
-            if(newtimer>70)
+            if(newtimer > timerlimit)
             {
             newtimer-=10;
             }

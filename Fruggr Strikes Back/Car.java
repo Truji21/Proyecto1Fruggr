@@ -11,12 +11,15 @@ public class Car extends Vehicle
     int Direction = 0;
     int Health = 100;
     int Speed = 3;
+    int WallIF = 200;
     MyWorld Game;
     
     public void act()
     {
         setRotation(Direction);
         move(Speed);
+        wallcheck(); //get walled idiot
+        WallIF--;
     }
     
     public void damage(){
@@ -27,6 +30,12 @@ public class Car extends Vehicle
         {
             getWorld().removeObject(this);
             Game.score += 500;
+        }
+    }
+    
+    private void wallcheck(){
+        if(getX() == 0 || getX() == 639){
+            getWorld().removeObject(this);
         }
     }
 }

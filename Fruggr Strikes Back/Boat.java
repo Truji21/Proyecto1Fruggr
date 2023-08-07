@@ -13,6 +13,7 @@ public class Boat extends Vehicle
     int Health = 100;
     int smoketimer = 0;
     int Speed = 3;
+    int WallIF = 200;
     MyWorld Game;
     
     public void act()
@@ -21,6 +22,8 @@ public class Boat extends Vehicle
         move(Speed);
         leavesmoke();
         smoketimer--;
+        wallcheck(); //get walled idiot
+        WallIF--;
     }
     
     public void damage(){
@@ -41,6 +44,12 @@ public class Boat extends Vehicle
         {
             getWorld().addObject(Puff,getX(),getY());
             smoketimer = 20;
+        }
+    }
+    
+    private void wallcheck(){
+        if(getX() == 0 || getX() == 639){
+            getWorld().removeObject(this);
         }
     }
 }

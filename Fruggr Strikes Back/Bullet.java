@@ -42,7 +42,7 @@ public class Bullet extends Actor
     
     public void destroy()
     {
-        if(isTouching(Wall.class))
+        if(isTouching(Wall.class) || getY() == 575)
         {
             getWorld().removeObject(this);
         }

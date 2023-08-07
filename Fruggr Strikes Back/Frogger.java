@@ -87,8 +87,9 @@ public class Frogger extends Actor
         if (Greenfoot.isKeyDown("S") && HopCoolDown<=0)
         {
             setLocation(getX(), getY()+speed);
-            if(TouchingWall()){
-                setLocation(getX(), getY()-speed);
+            //set up like this so fruggr can move freely without a wall at the bottom
+            if(getY() > 550){
+                setLocation(getX(), 544); //set to 544 so fruggr can return to the lane correctly
             }
             
             setImage(playerdown);
