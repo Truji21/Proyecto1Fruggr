@@ -133,6 +133,7 @@ public class Frogger extends Actor
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
             Game.ammo --;
+            Greenfoot.playSound("shoot.wav");
         }
         
         if (Greenfoot.isKeyDown("left"))
@@ -146,6 +147,7 @@ public class Frogger extends Actor
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
             Game.ammo --;
+            Greenfoot.playSound("shoot.wav");
         }
         
         if (Greenfoot.isKeyDown("up"))
@@ -159,6 +161,7 @@ public class Frogger extends Actor
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
             Game.ammo --;
+            Greenfoot.playSound("shoot.wav");
         }
         
         if (Greenfoot.isKeyDown("down"))
@@ -172,6 +175,7 @@ public class Frogger extends Actor
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
             Game.ammo --;
+            Greenfoot.playSound("shoot.wav");
         }
     }
     
@@ -237,6 +241,7 @@ public class Frogger extends Actor
             AmmoPack ammo = new AmmoPack();
             getWorld().addObject(ammo,x,y);
             Game.score += 1000;
+            Greenfoot.playSound("goal.wav");
         }
     }
 }

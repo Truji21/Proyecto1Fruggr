@@ -16,6 +16,7 @@ public class AmmoPack extends Actor
             getWorld().removeObject(this);
             Game.ammo += 25;
             Game.score += 200;
+            Greenfoot.playSound("battery.wav");
         }
     }
 }

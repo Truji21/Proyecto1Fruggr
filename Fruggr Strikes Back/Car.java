@@ -30,6 +30,7 @@ public class Car extends Vehicle
         {
             getWorld().removeObject(this);
             Game.score += 50;
+            Greenfoot.playSound("explode.wav");
         }
     }
     

@@ -13,6 +13,7 @@ public class MyWorld extends World
     public static int level = 1;
     public static int ammo = 50;
     public static int timer = 55*100;
+    GreenfootSound backgroundMusic = new GreenfootSound("Bit Shift.mp3");
     
     /**
      * Constructor for objects of class MyWorld.
@@ -23,6 +24,7 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(640, 576, 1);
         prepare();
+        backgroundMusic.playLoop();
     }   
     
     public void act()
