@@ -11,7 +11,7 @@ public class Frogger extends Actor
     private int speed = 64; //The distance covered, don't touch this.
     public int tears = 15;
     public int newtears = 15; //The lower the faster you shoot
-    private int health = 3; //Character health, you die when it reaches 0
+    public int health = 3; //Character health, you die when it reaches 0
     long curTime  = System.currentTimeMillis(); //Not used (yet)
     int weapon = 0; //Will be used if more weapons are added, currently useless
     int InvincibilityTimer = 0; //invincibility frames
@@ -39,10 +39,16 @@ public class Frogger extends Actor
         InvincibilityTimer--;
         tears--;
         HopCoolDown--;
+        timesup();
+        Goal();
         }
         else
         {
          setLocation(getX(), getY()-1);
+         if(TouchingWall()){
+                setLocation(getX(), getY()+speed);
+                getWorld().removeObject(this);
+            }
         }
         Game.health = health;
     }
@@ -122,9 +128,11 @@ public class Frogger extends Actor
             Bullet bolt = new Bullet();
             weaponuse();
             if (tears > 0 && --tears > 0) return;
+            if (Game.ammo == 0) return;
             bolt.Direction = 0;
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
+            Game.ammo --;
         }
         
         if (Greenfoot.isKeyDown("left"))
@@ -133,9 +141,11 @@ public class Frogger extends Actor
             Bullet bolt = new Bullet();
             weaponuse();
             if (tears > 0 && --tears > 0) return;
+            if (Game.ammo == 0) return;
             bolt.Direction = 180;
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
+            Game.ammo --;
         }
         
         if (Greenfoot.isKeyDown("up"))
@@ -144,9 +154,11 @@ public class Frogger extends Actor
             Bullet bolt = new Bullet();
             weaponuse();
             if (tears > 0 && --tears > 0) return;
+            if (Game.ammo == 0) return;
             bolt.Direction = 270;
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
+            Game.ammo --;
         }
         
         if (Greenfoot.isKeyDown("down"))
@@ -155,9 +167,11 @@ public class Frogger extends Actor
             Bullet bolt = new Bullet();
             weaponuse();
             if (tears > 0 && --tears > 0) return;
+            if (Game.ammo == 0) return;
             bolt.Direction = 90;
             tears = newtears;
             getWorld().addObject(bolt,getX(),getY());
+            Game.ammo --;
         }
     }
     
@@ -178,9 +192,14 @@ public class Frogger extends Actor
             if(InvincibilityTimer<=0)
             {
                 health--;
+                Game.score -= 1500;
                 InvincibilityTimer = 50;
             }
         }
+    }
+    
+    private void timesup(){
+        if(Game.timer == 0) health = 0;
     }
     
     public void checkdead()
@@ -188,6 +207,36 @@ public class Frogger extends Actor
         if(health <= 0){
             setImage(playerdead);
             PlayerAlive = false;
+        }
+    }
+    
+    /**
+     * If you touch the goal you go to the start and begin the next level
+     */
+    private void Goal(){
+        if(isTouching(Goal.class)){
+            setLocation(320, 544);
+            
+            //Switch doesn't work for some reason so a bunch of ifs it is
+            if(Game.level == 1) Game.timer = 55*100;
+            if(Game.level == 2) Game.timer = 55*90;
+            if(Game.level == 3) Game.timer = 55*80;
+            if(Game.level == 4) Game.timer = 55*70;
+            if(Game.level == 5) Game.timer = 55*60;
+            if(Game.level == 6) Game.timer = 55*50;
+            if(Game.level == 7) Game.timer = 55*40;
+            if(Game.level == 8) Game.timer = 55*30;
+            if(Game.level == 9) Game.timer = 55*20;
+            if(Game.level == 10) Game.timer = 55*20;
+            
+            if(Game.level < 10) Game.level++; //lvl 10 is the end
+            if(Game.level < 7) health = 3; //No health recovery from lvl 7 onwards
+            
+            int x = Greenfoot.getRandomNumber(620)+10;
+            int y = Greenfoot.getRandomNumber(456)+100;
+            AmmoPack ammo = new AmmoPack();
+            getWorld().addObject(ammo,x,y);
+            Game.score += 1000;
         }
     }
 }

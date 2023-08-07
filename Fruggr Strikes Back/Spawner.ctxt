@@ -10,4 +10,6 @@ comment3.target=void\ GetRandomNumber()
 comment3.text=\r\n\ Da\ n\u00FAmeros\ aleatorios\ para\ cambiar\ las\ condiciones\ bajo\ las\ que\ se\ crean\ autos\r\n
 comment4.params=
 comment4.target=void\ TimerDecrease()
-numComments=5
+comment5.params=
+comment5.target=void\ SetTimerLimit()
+numComments=6

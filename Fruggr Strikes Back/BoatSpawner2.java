@@ -8,10 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BoatSpawner2 extends Actor
 {
-    int timer = 50;
-    int newtimer = 200;
+    int timer = 10;
+    int newtimer = 100;
     int x = 1;
     int y = 1;
+    int timerlimit = 0;
+    MyWorld Game;
     
     public void act()
     {
@@ -28,11 +30,11 @@ public class BoatSpawner2 extends Actor
             getWorld().addObject(BoatSpawn,getX(),getY());
             BoatSpawn.Direction = 180;
             BoatSpawn.Speed = x;
-            timer = newtimer;
             if(newtimer>70)
             {
             newtimer-=10;
             }
+            timer = newtimer;
         }
     }
     

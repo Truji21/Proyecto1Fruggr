@@ -8,13 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BoatSpawner extends Actor
 {
-    int timer = 50;
-    int newtimer = 150;
+    int timer = 30;
+    int newtimer = 100;
     int x = 1;
     int y = 1;
+    int timerlimit = 0;
+    MyWorld Game;
     
     public void act()
     {
+        SetTimerLimit();
         GetRandomNumber();
         TimerDecrease();
         SpawnEnemy();
@@ -28,11 +31,11 @@ public class BoatSpawner extends Actor
             getWorld().addObject(BoatSpawn,getX(),getY());
             BoatSpawn.Direction = 0;
             BoatSpawn.Speed = x;
-            timer = newtimer;
             if(newtimer>70)
             {
             newtimer-=10;
             }
+            timer = newtimer;
         }
     }
     
@@ -49,6 +52,34 @@ public class BoatSpawner extends Actor
     {
         if(y == 1){
         timer--;
+        }
+    }
+    
+    private void SetTimerLimit()
+    {
+        switch(Game.level){
+            case 1:
+                timerlimit = 100;
+            case 2:
+                timerlimit = 90;
+            case 3:
+                timerlimit = 80;
+            case 4:
+                timerlimit = 70;
+            case 5:
+                timerlimit = 60;
+            case 6:
+                timerlimit = 50;
+            case 7:
+                timerlimit = 40;
+            case 8:
+                timerlimit = 30;
+            case 9:
+                timerlimit = 20;
+            case 10:
+                timerlimit = 10;
+            default:
+                timerlimit = 100;
         }
     }
 }

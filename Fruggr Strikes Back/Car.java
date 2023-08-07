@@ -29,7 +29,7 @@ public class Car extends Vehicle
         if(Health<=0)
         {
             getWorld().removeObject(this);
-            Game.score += 500;
+            Game.score += 50;
         }
     }
     
